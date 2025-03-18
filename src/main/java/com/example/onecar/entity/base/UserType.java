@@ -1,6 +1,13 @@
 package com.example.onecar.entity.base;
 
-public enum UserType {
+import org.springframework.security.core.GrantedAuthority;
+
+public enum UserType implements GrantedAuthority {
     MECHANIC,
-    CUSTOMER
+    CUSTOMER;
+
+    @Override
+    public String getAuthority() {
+        return name();
+    }
 }
