@@ -34,6 +34,10 @@ public abstract class BaseEntity {
         status = BaseStatus.DELETED;
     }
 
+    public void forClose() {
+        status = BaseStatus.CLOSED;
+    }
+
     public Long getId() {
         return id;
     }

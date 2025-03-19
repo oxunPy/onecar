@@ -26,4 +26,11 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
     List<UserEntity> findManagers(@Param("manager") UserType userType,
                                  @Param("active") BaseStatus active,
                                  @Param("created") BaseStatus created);
+
+
+    @Query(value = "select u.*\n" +
+            "from repairs r\n" +
+            "left join users u on r.customer_id = u.id\n" +
+            "where r.id = :rep_id\n", nativeQuery = true)
+    Optional<UserEntity> findCustomerByRepairId(@Param("rep_id") Long repairId);
 }

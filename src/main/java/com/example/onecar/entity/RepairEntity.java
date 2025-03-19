@@ -7,7 +7,9 @@ import com.example.onecar.entity.base.RepairTimeline;
 import jakarta.persistence.*;
 import org.springframework.beans.BeanUtils;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "repairs")
@@ -34,6 +36,9 @@ public class RepairEntity extends BaseEntity {
     private CarEntity car;
 
     private String demand;
+
+    @Transient
+    List<RepairDetailEntity> repairDetails = new ArrayList<>();
 
     @Override
     public RepairDto toDto() {
@@ -121,5 +126,13 @@ public class RepairEntity extends BaseEntity {
 
     public void setCar(CarEntity car) {
         this.car = car;
+    }
+
+    public List<RepairDetailEntity> getRepairDetails() {
+        return repairDetails;
+    }
+
+    public void setRepairDetails(List<RepairDetailEntity> repairDetails) {
+        this.repairDetails = repairDetails;
     }
 }

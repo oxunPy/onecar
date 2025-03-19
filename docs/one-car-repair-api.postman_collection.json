@@ -1,0 +1,345 @@
+{
+	"info": {
+		"_postman_id": "f0f0d872-ea32-4e4a-a27d-5f186930d9d1",
+		"name": "one-car-repair-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19935252",
+		"_collection_link": "https://duol-developers-terminal.postman.co/workspace/STEAM-ANALOGUE~10217299-a295-4127-8e88-bd1c753c7ee4/collection/19935252-f0f0d872-ea32-4e4a-a27d-5f186930d9d1?action=share&source=collection_link&creator=19935252"
+	},
+	"item": [
+		{
+			"name": "User registration",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\" : \"Oxun\",\r\n    \"lastName\" : \"Saidov\",\r\n    \"middleName\" : \"Erkinovich\",\r\n    \"userType\" : \"CUSTOMER\",\r\n    \"password\" : \"123\",\r\n    \"phone\" : \"914073438\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/auth/register",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"914073438\",\r\n    \"password\" : \"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/auth/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create car",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI5MTQwNzM0MzgiLCJpYXQiOjE3NDIzNjQ2OTcsImV4cCI6MTc0MjQ1MTA5N30.JIqYwDtHAi1Tz1bAGlp-j0VQSCWnas33qM6MEB0B5nk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"mark\" : \"tayota\",\r\n    \"model\" : \"GR Supra\",\r\n    \"releaseYear\": 2022,\r\n    \"vinNumber\" : \"1GNEK13ZX3R298984\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/cars/register-my-car",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"cars",
+						"register-my-car"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create repair request",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI5MTQwNzM0MzgiLCJpYXQiOjE3NDIzNzg3ODgsImV4cCI6MTc0MjQ2NTE4OH0.rndlsijJKWOXgKLOxdAXLtSGjo2A8oDw8K7tSLtx43s",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"car\" : {\r\n        \"id\" : 2\r\n    },\r\n    \"demand\" : \"Tonirovka\",\r\n    \"repairTimeline\" : \"IMMEDIATE\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/repairs/create",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"repairs",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create repair detail",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI5OTEyMzQ1NjciLCJpYXQiOjE3NDIzODQ3MjksImV4cCI6MTc0MjQ3MTEyOX0.aFIrZmEqJpX3hRvAh8_YH5s3mc4tFknCn8HokOB2Pk4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"price\" : 100.0,\r\n    \"serviceType\": \"Kraska qilish\",\r\n    \"bodyPart\" : \"Kuzov\",\r\n    \"repair\" : {\r\n        \"id\" : 1\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/repair-details/create",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"repair-details",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Report Car fix detail",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI5OTEyMzQ1NjciLCJpYXQiOjE3NDIzODQ3MjksImV4cCI6MTc0MjQ3MTEyOX0.aFIrZmEqJpX3hRvAh8_YH5s3mc4tFknCn8HokOB2Pk4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/report-car-fix/detail?rep_id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"report-car-fix",
+						"detail"
+					],
+					"query": [
+						{
+							"key": "rep_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "manager update repair request",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI5MDEyNDU2OTciLCJpYXQiOjE3NDIzNzkzMjksImV4cCI6MTc0MjQ2NTcyOX0.ufknnfGrFuKA8Y1LOQ_h1QaIHkzZuIq9mRhlbWA0uiA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\" : 1,\r\n    \"repairCycle\" : \"RECEIVED\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/repairs/manager-update",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"repairs",
+						"manager-update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update repair detail",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI5OTEyMzQ1NjciLCJpYXQiOjE3NDIzODQ3MjksImV4cCI6MTc0MjQ3MTEyOX0.aFIrZmEqJpX3hRvAh8_YH5s3mc4tFknCn8HokOB2Pk4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\" : 9,\r\n    \"price\" : 150.0,\r\n    \"serviceType\": \"Qizil Kraska qilish\",\r\n    \"bodyPart\" : \"Kuzov\",\r\n    \"repair\" : {\r\n        \"id\" : 1\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/repair-details/update",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"repair-details",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Report Car fix detail list",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI5OTEyMzQ1NjciLCJpYXQiOjE3NDIzODQ3MjksImV4cCI6MTc0MjQ3MTEyOX0.aFIrZmEqJpX3hRvAh8_YH5s3mc4tFknCn8HokOB2Pk4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/report-car-fix/detail-list",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"report-car-fix",
+						"detail-list"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,6 +1,8 @@
 package com.example.onecar.dto;
 
 import com.example.onecar.entity.base.UserType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -26,6 +28,7 @@ public class UserDto extends BaseDto {
     private UserType userType;
 
     @NotBlank(message = "Password should not be null or empty")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
     Set<CarDto> myCars;

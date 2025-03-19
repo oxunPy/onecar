@@ -7,7 +7,7 @@ import jakarta.validation.constraints.NotNull;
 
 import java.util.Date;
 
-public class RepairDto extends BaseDto {
+public class  RepairDto extends BaseDto {
     private Date started;
 
     private Date ended;

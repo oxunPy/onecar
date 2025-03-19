@@ -17,18 +17,18 @@ public class RepairDetailController {
         this.repairDetailService = repairDetailService;
     }
 
-    @PostMapping("/create-rep-detail")
+    @PostMapping("/create")
     @PreAuthorize("hasAuthority('MECHANIC')")
     public OneCarHttpResponse<RepairDetailDto> createRepDetail(@Valid @RequestBody RepairDetailDto repDetailDto) {
         return repairDetailService.add(repDetailDto);
     }
 
-    @PutMapping("/update-rep-detail")
+    @PutMapping("/update")
     @PreAuthorize("hasAuthority('MECHANIC')")
     public OneCarHttpResponse<RepairDetailDto> updateRepDetail(@RequestBody RepairDetailDto repDetailDto) {
         if(ValidatorUtils.notValidId(repDetailDto.getId())) {
             return OneCarHttpResponse.<RepairDetailDto>builder()
-                    .message("Id is not valid")
+                    .message("Id is not provided!")
                     .status(OneCarHttpResponse.Status.BAD_REQUEST)
                     .build();
         }
@@ -36,12 +36,12 @@ public class RepairDetailController {
         return repairDetailService.update(repDetailDto);
     }
 
-    @DeleteMapping("/delete-rep-detail")
+    @DeleteMapping("/delete")
     @PreAuthorize("hasAuthority('MECHANIC')")
     public OneCarHttpResponse<Boolean> deleteRepDetail(@RequestParam("rep_detail_id") Long repDetailId) {
         if(ValidatorUtils.notValidId(repDetailId)) {
             return OneCarHttpResponse.<Boolean>builder()
-                    .message("Id is not valid")
+                    .message("Id is not provided!")
                     .status(OneCarHttpResponse.Status.BAD_REQUEST)
                     .object(Boolean.FALSE)
                     .build();

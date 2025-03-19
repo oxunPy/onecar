@@ -1,14 +1,23 @@
 package com.example.onecar.dto;
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 import java.math.BigDecimal;
 
 public class RepairDetailDto extends BaseDto {
+    @NotNull(message = "Service price should not be null")
+    @Min(value = 1L)
     private BigDecimal price;
 
+    @NotBlank(message = "Service type should not be empty")
     private String serviceType;      // оказанный услуг
 
+    @NotBlank(message = "Body part should not be empty")
     private String bodyPart;         // Запчасть
 
+    @NotNull(message = "Repair request should not be null")
     private RepairDto repair;
 
     private UserDto mechanic;

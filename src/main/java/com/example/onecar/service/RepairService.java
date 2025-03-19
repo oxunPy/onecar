@@ -173,11 +173,32 @@ public class RepairService implements IRepairService {
 
     @Override
     public OneCarHttpResponse<List<RepairDto>> findAll() {
-        return null;
+        List<RepairEntity> repairs = repairRepository.findActiveRepairs(BaseStatus.ACTIVE, BaseStatus.CREATED);
+        return OneCarHttpResponse.<List<RepairDto>>builder()
+                .message("Here there are all repairs!")
+                .status(OneCarHttpResponse.Status.SUCCESS)
+                .object(repairs.stream().map(RepairEntity::toDto).toList())
+                .build();
     }
 
     @Override
     public OneCarHttpResponse<Boolean> closeRepair(Long id) {
-        return null;
+        Optional<RepairEntity> repairOpt = repairRepository.findById(id);
+        if(repairOpt.isPresent()) {
+            repairOpt.get().forClose();
+            repairRepository.save(repairOpt.get());
+
+            return OneCarHttpResponse.<Boolean>builder()
+                    .message("Repair request is closed")
+                    .status(OneCarHttpResponse.Status.SUCCESS)
+                    .object(true)
+                    .build();
+        }
+
+        return OneCarHttpResponse.<Boolean>builder()
+                .message("Repair is not found!")
+                .status(OneCarHttpResponse.Status.FAILED)
+                .object(false)
+                .build();
     }
 }
