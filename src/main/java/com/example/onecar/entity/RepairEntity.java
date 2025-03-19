@@ -21,11 +21,17 @@ public class RepairEntity extends BaseEntity {
 
     private RepairTimeline repairTimeline;
 
-    @Column(name = "customer_id")
+    @Column(name = "customer_id", nullable = false)
     private Long customerId;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "customer_id", insertable = false, updatable = false)
     private UserEntity customer;
+
+    @Column(name = "car_id", nullable = false)
+    private Long carId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "car_id", insertable = false, updatable = false)
+    private CarEntity car;
 
     private String demand;
 
@@ -36,6 +42,10 @@ public class RepairEntity extends BaseEntity {
 
         if(customer != null) {
             dto.setCustomer(getCustomer().toDto());
+        }
+
+        if(car != null) {
+            dto.setCar(getCar().toDto());
         }
 
         return dto;
@@ -95,5 +105,21 @@ public class RepairEntity extends BaseEntity {
 
     public void setDemand(String demand) {
         this.demand = demand;
+    }
+
+    public Long getCarId() {
+        return carId;
+    }
+
+    public void setCarId(Long carId) {
+        this.carId = carId;
+    }
+
+    public CarEntity getCar() {
+        return car;
+    }
+
+    public void setCar(CarEntity car) {
+        this.car = car;
     }
 }

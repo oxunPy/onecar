@@ -20,6 +20,7 @@ public interface CarRepository extends JpaRepository<CarEntity, Long> {
 
     @Query(value = "select *\n" +
             "from cars\n" +
-            "where status = :active", nativeQuery = true)
-    List<CarEntity> findAllActive(@Param("active") int active);
+            "where status = :active or status = :created", nativeQuery = true)
+    List<CarEntity> findAllActive(@Param("active") int active,
+                                  @Param("created") int created);
 }

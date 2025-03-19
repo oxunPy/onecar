@@ -21,16 +21,31 @@ public class RepairController {
     @PostMapping("/create")
     @PreAuthorize("hasAuthority('CUSTOMER')")
     public OneCarHttpResponse<RepairDto> createNewRepair(@Valid @RequestBody RepairDto repairDto) {
+        if(repairDto.getCar() == null || ValidatorUtils.notValidId(repairDto.getCar().getId())) {
+            return OneCarHttpResponse.<RepairDto>builder()
+                    .message("Car id is not valid!")
+                    .status(OneCarHttpResponse.Status.BAD_REQUEST)
+                    .build();
+        }
+
         return repairService.add(repairDto);
     }
 
     @PutMapping("/customer-update")
     @PreAuthorize("hasAuthority('CUSTOMER')")
     public OneCarHttpResponse<RepairDto> updateRepairByCustomer(@RequestBody RepairDto repairDto) {
+
+        if(ValidatorUtils.notValidId(repairDto.getId())) {
+            return OneCarHttpResponse.<RepairDto>builder()
+                    .message("Repair id is not valid!")
+                    .status(OneCarHttpResponse.Status.BAD_REQUEST)
+                    .build();
+        }
+
         return repairService.update(repairDto);
     }
 
-    // changing cycle
+    // changing cycle, started, ended
     @PutMapping("/manager-update")
     @PreAuthorize("hasAuthority('MANAGER')")
     public OneCarHttpResponse<RepairDto> updateRepairByManager(@RequestBody RepairDto repairDto) {

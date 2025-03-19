@@ -98,7 +98,7 @@ public class CarService implements ICarService {
 
     @Override
     public OneCarHttpResponse<List<CarDto>> findAll() {
-        List<CarEntity> cars = carRepository.findAllActive(BaseStatus.ACTIVE.ordinal());
+        List<CarEntity> cars = carRepository.findAllActive(BaseStatus.ACTIVE.ordinal(), BaseStatus.CREATED.ordinal());
         return OneCarHttpResponse.<List<CarDto>>builder()
                 .message("All cars list!")
                 .status(OneCarHttpResponse.Status.SUCCESS)
