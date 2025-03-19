@@ -30,7 +30,7 @@ public class RepairDetailEntity extends BaseEntity {
     private UserEntity mechanic;
 
     @Override
-    protected RepairDetailDto toDto() {
+    public RepairDetailDto toDto() {
         RepairDetailDto dto = new RepairDetailDto();
         BeanUtils.copyProperties(this, dto, "repair", "mechanic");
 

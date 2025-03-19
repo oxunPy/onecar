@@ -4,5 +4,6 @@ public enum BaseStatus {
     CREATED,
     PASSIVE,
     ACTIVE,
+    CLOSED,
     DELETED
 }

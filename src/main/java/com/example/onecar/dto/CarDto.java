@@ -1,10 +1,15 @@
 package com.example.onecar.dto;
 
+import jakarta.validation.constraints.NotBlank;
+
 public class CarDto extends BaseDto {
+    @NotBlank(message = "Car mark should not be empty!")
     private String mark;
 
+    @NotBlank(message = "Car model should not be empty!")
     private String model;
 
+    @NotBlank(message = "Car vin number should not be empty!")
     private String vinNumber;
 
     private Integer releaseYear;

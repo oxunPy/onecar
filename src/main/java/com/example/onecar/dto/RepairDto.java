@@ -2,6 +2,7 @@ package com.example.onecar.dto;
 
 import com.example.onecar.entity.base.RepairCycle;
 import com.example.onecar.entity.base.RepairTimeline;
+import jakarta.validation.constraints.NotBlank;
 
 import java.util.Date;
 
@@ -15,6 +16,9 @@ public class RepairDto extends BaseDto {
     private RepairTimeline repairTimeline;
 
     private UserDto customer;
+
+    @NotBlank(message = "Customer demand should not empty!")
+    private String demand;
 
     public Date getStarted() {
         return started;
@@ -54,5 +58,13 @@ public class RepairDto extends BaseDto {
 
     public void setCustomer(UserDto customer) {
         this.customer = customer;
+    }
+
+    public String getDemand() {
+        return demand;
+    }
+
+    public void setDemand(String demand) {
+        this.demand = demand;
     }
 }

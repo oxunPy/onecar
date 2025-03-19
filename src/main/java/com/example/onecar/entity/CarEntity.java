@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import org.springframework.beans.BeanUtils;
 
 @Entity
-@Table(name = "cars")
+@Table(name = "cars", uniqueConstraints = {@UniqueConstraint(name = "uk_mark_model_vin", columnNames = {"mark", "model", "vin_number"}) })
 public class CarEntity extends BaseEntity {
     private String mark;
 
@@ -16,14 +16,14 @@ public class CarEntity extends BaseEntity {
 
     private Integer releaseYear;
 
-    @Column(name = "owner_id")
+    @Column(name = "owner_id", nullable = false)
     private Long ownerId;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "owner_id", insertable = false, updatable = false)
     private UserEntity owner;
 
     @Override
-    protected CarDto toDto() {
+    public CarDto toDto() {
         CarDto dto = new CarDto();
         BeanUtils.copyProperties(this, dto, "owner");
 

@@ -1,6 +1,7 @@
 package com.example.onecar.service;
 
 import com.example.onecar.dto.RepairDetailDto;
+import com.example.onecar.dto.response.OneCarHttpResponse;
 import com.example.onecar.repository.RepairDetailRepository;
 import com.example.onecar.service.I.IRepairDetailService;
 import org.springframework.stereotype.Service;
@@ -16,22 +17,22 @@ public class RepairDetailService implements IRepairDetailService {
     }
 
     @Override
-    public void add(RepairDetailDto item) {
-
+    public OneCarHttpResponse<RepairDetailDto> add(RepairDetailDto item) {
+        return null;
     }
 
     @Override
-    public void update(RepairDetailDto item) {
-
+    public OneCarHttpResponse<RepairDetailDto> update(RepairDetailDto item) {
+        return null;
     }
 
     @Override
-    public void delete(RepairDetailDto item) {
-
+    public OneCarHttpResponse<Boolean> delete(Long id) {
+        return null;
     }
 
     @Override
-    public List<RepairDetailDto> findAll() {
-        return List.of();
+    public OneCarHttpResponse<List<RepairDetailDto>> findAll() {
+        return null;
     }
 }

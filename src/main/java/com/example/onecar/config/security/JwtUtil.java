@@ -13,13 +13,13 @@ import java.util.function.Function;
 
 @Component
 public class JwtUtil {
-    private static final String SECRET_KEY = "mos403mvls9092dev270620SOE3438uz/onecar:repair/uz2025";
-    private static final long EXPIRATION_DATE = 86400000;
+    private static final String SECRET_KEY = "mos403mvls9092dev270620SOE3438uz/onecarrepair/uz2025";
+    public static final long EXPIRATION_DATE = 86400000;
 
 
-    public String generateToken(UserDto user) {
+    public String generateToken(String phone) {
         return Jwts.builder()
-                .setSubject(user.getPhone())
+                .setSubject(phone)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_DATE))
                 .signWith(SignatureAlgorithm.HS256, SECRET_KEY)

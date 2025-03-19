@@ -27,8 +27,10 @@ public class RepairEntity extends BaseEntity {
     @JoinColumn(name = "customer_id", insertable = false, updatable = false)
     private UserEntity customer;
 
+    private String demand;
+
     @Override
-    protected RepairDto toDto() {
+    public RepairDto toDto() {
         RepairDto dto = new RepairDto();
         BeanUtils.copyProperties(this, dto, "customer");
 
@@ -85,5 +87,13 @@ public class RepairEntity extends BaseEntity {
 
     public void setCustomer(UserEntity customer) {
         this.customer = customer;
+    }
+
+    public String getDemand() {
+        return demand;
+    }
+
+    public void setDemand(String demand) {
+        this.demand = demand;
     }
 }

@@ -17,6 +17,23 @@ public abstract class BaseEntity {
 
     protected abstract <T extends BaseDto> T toDto();
 
+    public void forCreate() {
+        createdDate = new Date();
+        status = BaseStatus.CREATED;
+    }
+
+    public void forActive() {
+        status = BaseStatus.ACTIVE;
+    }
+
+    public void forPassive() {
+        status = BaseStatus.PASSIVE;
+    }
+
+    public void forDelete() {
+        status = BaseStatus.DELETED;
+    }
+
     public Long getId() {
         return id;
     }
