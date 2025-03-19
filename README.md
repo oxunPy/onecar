@@ -1,7 +1,6 @@
 # Project Overview
 
 ## Technology Stack
-- **Branch:** Master
 - **Database:** PostgreSQL
 - **Backend:** Spring Boot
 - **Real-Time Updates:** WebSocket Messaging
