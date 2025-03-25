@@ -33,3 +33,5 @@ The system supports three types of users:
 1. **Mobile Notifications:** Implement Firebase Cloud Messaging for real-time status updates and repair details.
 2. **Real-Time Chat:** Utilize Redis Stream and WebSocket for chat messaging between users.
 3. **Message Distribution:** Integrate Kafka for message distribution across services and instances.
+
+![img.png](img.png)
