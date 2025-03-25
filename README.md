@@ -34,4 +34,5 @@ The system supports three types of users:
 2. **Real-Time Chat:** Utilize Redis Stream and WebSocket for chat messaging between users.
 3. **Message Distribution:** Integrate Kafka for message distribution across services and instances.
 
+## ER Diagram
 ![img.png](img.png)
